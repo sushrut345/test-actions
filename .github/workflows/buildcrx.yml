@@ -21,12 +21,14 @@ jobs:
         env:
           RELEASE_VERSION: extn-${{ steps.vars.outputs.tag }}.crx
         run: crx pack -o $RELEASE_VERSION
+      - name: check created
+        run: ls
       - name: Upload release binary
         uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./$RELEASE_VERSION
-          asset_name: $RELEASE_VERSION
+          asset_path: ./${{ RELEASE_VERSION }}
+          asset_name: vaccreg.crx
           asset_content_type: application/x-chrome-extension
