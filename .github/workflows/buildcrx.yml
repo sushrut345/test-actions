@@ -15,7 +15,4 @@ jobs:
       - name: Check output
         env:
           RELEASE_VERSION: extn-${{ steps.vars.outputs.tag }}.crx
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ steps.vars.outputs.tag }}
-      - run: crx pack -o $RELEASE_VERSION
+        run: crx pack -o $RELEASE_VERSION
