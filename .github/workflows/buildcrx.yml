@@ -14,8 +14,8 @@ jobs:
       - run: npm install -g crx
       - name: Check output
         env:
-          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+          RELEASE_VERSION: extn-${{ steps.vars.outputs.tag }}.crx
         run: |
           echo $RELEASE_VERSION
           echo ${{ steps.vars.outputs.tag }}
-      - run: crx pack -o extn-$RELEASE_VERSION.crx
+      - run: crx pack -o $RELEASE_VERSION
