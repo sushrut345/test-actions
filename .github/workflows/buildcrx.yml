@@ -12,10 +12,9 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
       - run: npm install -g crx
-      - name: Check output
+      - name: Pack crx file
         env:
           RELEASE_VERSION: extn-${{ steps.vars.outputs.tag }}.crx
-      - name: pack crx
         run: crx pack -o $RELEASE_VERSION
       - name: check created
         run: ls -a
